@@ -1,56 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body{
+
+body {
     width: 100%;
     height: 100vh;
     background-image: url('../img/wp9602006-hd-4k-romantic-wallpapers.jpg');
-    
+
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: bottom;
 
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
     overflow: hidden;
 }
-.modal{
+
+.modal {
     width: 520px;
     height: 600px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
-    border-radius: 20px; 
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
-    padding: 1em; 
 
     display: none;
     align-items: center;
     flex-direction: column;
-    
-    
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    padding: 20px;
 }
-h1{
-    font-size: 46px;
+
+h1 {
+    font-size: 2.2rem;
     color: #fff;
     font-weight: 300;
+    text-align: center;
 }
-img{
-    width: 430px;
+
+img {
+    width: 400px;
 }
-.btns{
-    margin-top: 5em;
+
+.btns {
+    margin-top: 40px;
     width: 100%;
     height: 3em;
     display: flex;
     gap: 2em;
 }
-button{
+
+button {
     font-size: 20px;
     padding: 10px;
     border-radius: 10px;
@@ -64,10 +73,191 @@ button{
     text-align: center;
     color: #fff;
     background-color: rgba(181, 141, 219, 0.156);
+    z-index: 10;
 }
-#sim{
-margin-left: 6.5em;
+
+#sim {
+    margin-left: 6.5em;
 }
-button:hover{
-   padding: 12px ;
+
+/*////////////////////////////////////////////////////////////*/
+.photos-container {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.gallery {
+    --d: 26s;
+    /* duration */
+    --total-images: 13;
+    /* Novo: número total de imagens */
+    display: grid;
+    place-items: center;
+    /* Center both horizontally and vertically */
+    width: 360px;
+}
+
+.gallery>img {
+    grid-area: 1/1;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 10px solid #f2f2f2;
+    border-bottom: 60px solid #f2f2f2;
+    box-shadow: 0 0 4px #0007;
+    z-index: 2;
+    animation: slide 28s infinite, z-order 28s infinite steps(1);
+}
+
+.gallery img:last-child {
+    animation-name: slide, z-order-last;
+}
+
+/* Ajuste para 13 imagens */
+.gallery>img:nth-child(1) {
+    animation-delay: calc(0 * (var(--d) / var(--total-images)));
+    --r: 16deg;
+}
+
+.gallery>img:nth-child(2) {
+    animation-delay: calc(-1 * (var(--d) / var(--total-images)));
+    --r: -1deg;
+}
+
+.gallery>img:nth-child(3) {
+    animation-delay: calc(-2 * (var(--d) / var(--total-images)));
+    --r: -19deg;
+}
+
+.gallery>img:nth-child(4) {
+    animation-delay: calc(-3 * (var(--d) / var(--total-images)));
+    --r: 6deg;
+}
+
+.gallery>img:nth-child(5) {
+    animation-delay: calc(-4 * (var(--d) / var(--total-images)));
+    --r: -8deg;
+}
+
+.gallery>img:nth-child(6) {
+    animation-delay: calc(-5 * (var(--d) / var(--total-images)));
+    --r: 12deg;
+}
+
+.gallery>img:nth-child(7) {
+    animation-delay: calc(-6 * (var(--d) / var(--total-images)));
+    --r: -5deg;
+}
+
+.gallery>img:nth-child(8) {
+    animation-delay: calc(-7 * (var(--d) / var(--total-images)));
+    --r: 20deg;
+}
+
+.gallery>img:nth-child(9) {
+    animation-delay: calc(-8 * (var(--d) / var(--total-images)));
+    --r: -15deg;
+}
+
+.gallery>img:nth-child(10) {
+    animation-delay: calc(-9 * (var(--d) / var(--total-images)));
+    --r: 3deg;
+}
+
+.gallery>img:nth-child(11) {
+    animation-delay: calc(-10 * (var(--d) / var(--total-images)));
+    --r: -10deg;
+}
+
+.gallery>img:nth-child(12) {
+    animation-delay: calc(-11 * (var(--d) / var(--total-images)));
+    --r: 18deg;
+}
+
+.gallery>img:nth-child(13) {
+    animation-delay: calc(-12 * (var(--d) / var(--total-images)));
+    --r: -2deg;
+}
+
+
+@keyframes slide {
+    10% {
+        transform: translateX(120%) rotate(var(--r));
+    }
+
+    0%,
+    100%,
+    20% {
+        transform: translateX(0%) rotate(var(--r));
+    }
+}
+
+@keyframes z-order {
+
+    10%,
+    20% {
+        z-index: 1;
+    }
+
+    80% {
+        z-index: 2;
+    }
+}
+
+@keyframes z-order-last {
+
+    10%,
+    20% {
+        z-index: 1;
+    }
+
+    90% {
+        z-index: 2;
+    }
+}
+
+#hedlinecontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+#shine {
+    font-size: 52px;
+    font-weight: bold;
+    color: rgba(255, 0, 102, 0.3);
+    z-index: 10;
+    background: -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
+    -webkit-background-size: 150px;
+    -webkit-background-clip: text;
+    -webkit-animation-name: shine;
+    -webkit-animation-duration: 3s;
+    /* Adjust the duration as needed */
+    -webkit-animation-iteration-count: infinite;
+    text-shadow: 0 0px 0px rgba(233, 85, 189, 0.419);
+
+}
+
+@-webkit-keyframes shine {
+
+    0%,
+    10% {
+        background-position: -1000px;
+    }
+
+    20% {
+        background-position: top left;
+    }
+
+    90% {
+        background-position: top right;
+    }
+
+    100% {
+        background-position: 1000px;
+    }
 }
